@@ -10,11 +10,11 @@ defmodule Predicator.Mixfile do
     # Required
 
     # Optional
-    {:ecto, "~> 3.0", optional: true},
+    {:ecto, "~> 3.13", optional: true},
 
     # Development, Documentation, Testing, ...
-    {:dialyxir, "~> 1.0.0-rc.4", only: :dev, runtime: false},
-    {:ex_doc, "~> 0.23", only: :dev, runtime: false}
+    {:dialyxir, "~> 1.4", only: :dev, runtime: false},
+    {:ex_doc, "~> 0.38", only: :dev, runtime: false}
   ]
 
   def project() do
@@ -22,8 +22,8 @@ defmodule Predicator.Mixfile do
       app: @app,
       name: @name,
       version: @version,
-      elixir: "~> 1.6",
-      build_embedded: Mix.env() == :prod,
+      elixir: "~> 1.18",
+      compilers: [:leex, :yecc] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       package: package(),
       aliases: aliases(),
