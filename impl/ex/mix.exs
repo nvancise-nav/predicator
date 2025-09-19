@@ -10,7 +10,7 @@ defmodule Predicator.Mixfile do
     # Required
 
     # Optional
-    {:ecto, "~> 3.13", optional: true},
+    {:ecto, "~> 3.11", optional: true},
 
     # Development, Documentation, Testing, ...
     {:dialyxir, "~> 1.4", only: :dev, runtime: false},
