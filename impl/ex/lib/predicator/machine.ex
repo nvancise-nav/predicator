@@ -150,7 +150,7 @@ defmodule Predicator.Machine do
     replace_stack(machine, true)
   end
 
-  def accept_instruction(machine = %__MODULE__{stack: [val | _rest_of_stack]} = machine, [
+  def accept_instruction(%__MODULE__{stack: [val | _rest_of_stack]} = machine, [
         "to_bool" | _
       ])
       when is_boolean(val) do
@@ -242,7 +242,8 @@ defmodule Predicator.Machine do
 
   def accept_instruction(machine = %__MODULE__{stack: [_second | [first | _rest_of_stack]]}, [
         "compare" | ["GT" | _]
-      ]) when is_nil(first) do
+      ])
+      when is_nil(first) do
     put_instruction(machine, false)
   end
 
@@ -291,7 +292,8 @@ defmodule Predicator.Machine do
 
   def accept_instruction(machine = %__MODULE__{stack: [_match | [nil | _rest_of_stack]]}, [
         "compare" | ["STARTSWITH" | _]
-      ]), do: put_instruction(machine, false)
+      ]),
+      do: put_instruction(machine, false)
 
   def accept_instruction(machine = %__MODULE__{stack: [match | [stack_val | _rest_of_stack]]}, [
         "compare" | ["STARTSWITH" | _]
